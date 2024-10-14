@@ -12,7 +12,7 @@ public class BoardImpl implements Board {
 
     }
 
-    public boolean isLegalMove(int row, int col){
+    public booelean isLegalMove(int row, int col){
         return false;
     }
 

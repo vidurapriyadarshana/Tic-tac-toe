@@ -1,2 +1,4 @@
-package com.assignment.tictactoe.service;public enum Piece {
+package com.assignment.tictactoe.service;
+
+public enum Piece {
 }
