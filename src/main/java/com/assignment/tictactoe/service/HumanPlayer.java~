@@ -1,8 +1,8 @@
 package com.assignment.tictactoe.service;
 
-public class AiPlayer extends Player {
+public class HumanPlayer extends Player {
 
-    public AiPlayer(BoardImpl board) {
+    public HumanPlayer(BoardImpl board) {
         super();
     }
 

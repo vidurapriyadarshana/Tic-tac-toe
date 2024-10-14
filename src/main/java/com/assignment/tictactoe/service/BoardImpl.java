@@ -2,7 +2,7 @@ package com.assignment.tictactoe.service;
 
 public class BoardImpl implements Board {
 
-    Piece[][] pieces;
+    private Piece[][] board = new Piece[3][3];
 
     BoardImpl(){
 
