@@ -1,6 +1,8 @@
 package com.assignment.tictactoe.controller;
 
+import com.assignment.tictactoe.service.AiPlayer;
 import com.assignment.tictactoe.service.BoardUi;
+import com.assignment.tictactoe.service.HumanPlayer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -32,6 +34,9 @@ public class BoardController implements BoardUi {
 
     @FXML
     private Button bt22;
+
+    private AiPlayer aiPlayer;
+    private HumanPlayer humanPlayer;
 
     @FXML
     void handleButtonAction(ActionEvent event) {
