@@ -37,4 +37,14 @@ public class BoardController implements BoardUi {
     void handleButtonAction(ActionEvent event) {
 
     }
+
+    @Override
+    public void updateMove(int row, int col, boolean isHuman) {
+
+    }
+
+    @Override
+    public void notifyWinner() {
+
+    }
 }
