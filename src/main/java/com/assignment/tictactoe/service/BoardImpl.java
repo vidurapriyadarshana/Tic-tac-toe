@@ -15,10 +15,22 @@ public class BoardImpl implements Board {
     }
 
     public void initializeBoard(){
-
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                board[i][j] = Piece.EMPTY;
+            }
+        }
     }
 
     public boolean isLegalMove(int row, int col){
+        if(row < 0 || row >= 3 || col < 0 || col >= 3){
+            return false;
+        }
+
+        if(board[row][col] == null || board[row][col] == Piece.EMPTY){
+            return true;
+        }
+
         return false;
     }
 
