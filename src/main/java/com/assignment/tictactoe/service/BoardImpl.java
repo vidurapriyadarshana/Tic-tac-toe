@@ -30,7 +30,6 @@ public class BoardImpl implements Board {
         if(board[row][col] == null || board[row][col] == Piece.EMPTY){
             return true;
         }
-
         return false;
     }
 
