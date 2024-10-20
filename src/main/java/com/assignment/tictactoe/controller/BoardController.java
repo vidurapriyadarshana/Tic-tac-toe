@@ -49,8 +49,18 @@ public class BoardController implements BoardUi {
         }
     }
 
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, message);
+        alert.setOnCloseRequest((DialogEvent event) -> {
+            board.initializeBoard();
+            updateUi();
+        });
+        alert.showAndWait();
+    }
+
     @Override
-    public void updateMove(int row, int col, Piece piece) {
+    public void update(int row, int col, Piece piece) {
         String buttonId = "id" + row + col;
         for (Node node : MainGrid.getChildren()) {
             if (node instanceof Button button && buttonId.equals(node.getId())) {
@@ -67,20 +77,11 @@ public class BoardController implements BoardUi {
     }
 
     @Override
-    public void notifyWinner(Piece winner) {
+    public void NotifyWinner(Piece winner) {
         if (winner == Piece.X) {
             showAlert("X wins");
         } else if (winner == Piece.O) {
             showAlert("O wins");
         }
-    }
-
-    private void showAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, message);
-        alert.setOnCloseRequest((DialogEvent event) -> {
-            board.initializeBoard();
-            updateUi();
-        });
-        alert.showAndWait();
     }
 }

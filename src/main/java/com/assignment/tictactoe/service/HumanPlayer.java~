@@ -2,12 +2,15 @@ package com.assignment.tictactoe.service;
 
 public class HumanPlayer extends Player {
 
-    HumanPlayer(Board board) {
+    public HumanPlayer(BoardImpl board) {
         super(board);
     }
 
     @Override
     public void move(int row, int col) {
-        board.updateMove(row, col, Piece.X);
+        if(board.isLegalMove(row, col)){
+            board.updateMove(row, col, Piece.X);
+        }
     }
+    
 }
