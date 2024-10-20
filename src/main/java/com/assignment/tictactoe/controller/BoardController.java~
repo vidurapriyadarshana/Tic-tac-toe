@@ -1,7 +1,6 @@
 package com.assignment.tictactoe.controller;
 
 import com.assignment.tictactoe.service.*;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -92,9 +91,7 @@ public class BoardController implements BoardUi {
         } else if (winner == Piece.O) {
             aiWinCount++;
             System.out.println(aiWinCount);
-            Platform.runLater(() -> {
-                aiScore.setText(String.valueOf(aiWinCount));  // Update the label
-            });
+            aiScore.setText(String.valueOf(aiWinCount));
             showAlert("O wins");
         }
     }

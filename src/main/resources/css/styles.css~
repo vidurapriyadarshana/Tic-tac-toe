@@ -13,6 +13,8 @@
     -fx-border-color: #7A1CAC;
     -fx-text-fill: white;
     -fx-font-size: 40px;
+    -fx-border-radius: 10px;
+    -fx-padding: 10;
 }
 
 #humanScore {
@@ -21,4 +23,5 @@
     -fx-text-fill: white;
     -fx-font-size: 40px;
     -fx-border-radius: 10px;
+    -fx-padding: 10;
 }

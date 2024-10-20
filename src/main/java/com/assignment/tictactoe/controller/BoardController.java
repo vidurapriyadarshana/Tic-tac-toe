@@ -85,12 +85,10 @@ public class BoardController implements BoardUi {
     public void NotifyWinner(Piece winner) {
         if (winner == Piece.X) {
             humanWinCount++;
-            System.out.println(humanWinCount);
             humanScore.setText(String.valueOf(humanWinCount));
             showAlert("X wins");
         } else if (winner == Piece.O) {
             aiWinCount++;
-            System.out.println(aiWinCount);
             aiScore.setText(String.valueOf(aiWinCount));
             showAlert("O wins");
         }
