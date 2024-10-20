@@ -4,78 +4,73 @@ import lombok.Getter;
 
 public class BoardImpl implements Board {
 
-    private Piece[][] board = new Piece[3][3];
+    private Piece[][] pieces = new Piece[3][3];
 
-    @Getter
-    private BoardUi boardUi;
-
-    BoardImpl(){
-
+    public BoardImpl() {
+        initializeBoard();
     }
 
-    BoardImpl(BoardUi boardUi){
-        this.boardUi = boardUi;
+    public Piece[][] getPieces() {
+        return pieces;
     }
 
-    public void initializeBoard(){
-        // initialize the array/board
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                board[i][j] = Piece.EMPTY;
+    @Override
+    public void initializeBoard() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                pieces[i][j] = Piece.EMPTY;
             }
         }
     }
 
-    public boolean isLegalMove(int row, int col){
-        // check the move is legal
-        if(row < 0 || row >= 3 || col < 0 || col >= 3){
-            return false;
-        }
-
-        if(board[row][col] == null || board[row][col] == Piece.EMPTY){
-            return true;
-        }
-
-        return false;
+    @Override
+    public boolean isLegalMove(int row, int col) {
+        return pieces[row][col] == Piece.EMPTY;
     }
 
-    public void updateMove(int row, int col, Piece piece){
-        // assign the piece
-        board[row][col] = piece;
+    @Override
+    public void updateMove(int row, int col, Piece piece) {
+        pieces[row][col] = piece;
     }
 
-    public Winner checkWinner(){
-
-        for (int i = 0; i < board.length; i++) {
-            // check rows for winner
-            if(board[i][0] == board[i][1] && board[i][0] == board[i][2] && board[i][0] != Piece.EMPTY){
-                return new Winner(board[i][0]);
+    @Override
+    public Winner checkWinner() {
+        for (int i = 0; i < 3; i++) {
+            if (pieces[i][0] == pieces[i][1] && pieces[i][0] == pieces[i][2] && pieces[i][0] != Piece.EMPTY) {
+                return new Winner(pieces[i][0], i, 0, i, 1, i, 2);
             }
-            // check columns for winner
-            if(board[0][i] == board[1][i] && board[0][i] == board[2][i] && board[0][i] != Piece.EMPTY){
-                return new Winner(board[0][i]);
+            if (pieces[0][i] == pieces[1][i] && pieces[0][i] == pieces[2][i] && pieces[0][i] != Piece.EMPTY) {
+                return new Winner(pieces[0][i], 0, i, 1, i, 2, i);
             }
         }
-
-        // check diagonals
-        if(board[0][0] == board[1][1] && board[0][0] == board[2][2] && board[0][0] != Piece.EMPTY){
-            return new Winner(board[0][0]);
+        if (pieces[0][0] == pieces[1][1] && pieces[0][0] == pieces[2][2] && pieces[0][0] != Piece.EMPTY) {
+            return new Winner(pieces[0][0], 0, 0, 1, 1, 2, 2);
         }
-
-        if(board[0][2] == board[1][1] && board[0][2] == board[2][0] && board[0][2] != Piece.EMPTY){
-            return new Winner(board[0][2]);
+        if (pieces[0][2] == pieces[1][1] && pieces[0][2] == pieces[2][0] && pieces[0][2] != Piece.EMPTY) {
+            return new Winner(pieces[0][2], 0, 2, 1, 1, 2, 0);
         }
-
         return null;
     }
 
-    public void printBoard(){
-        for (int row = 0; row < board.length; row++) {
-            for (int col = 0; col < board[row].length; col++) {
-                System.out.print(board[row][col] = Piece.EMPTY);
+    @Override
+    public void printBoard() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(pieces[i][j] + " ");
             }
             System.out.println();
         }
+    }
+
+    public boolean isBoardFull() {
+        for (int i = 0; i < pieces.length; i++) {
+            for (int j = 0; j < pieces[i].length; j++) {
+                if (pieces[i][j] == Piece.EMPTY) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
 }
