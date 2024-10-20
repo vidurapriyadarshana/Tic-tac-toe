@@ -1,7 +1,24 @@
 .button {
-    -fx-background-radius: 20; /* Makes corners rounded */
-    -fx-border-radius: 20;     /* Makes border corners rounded */
-    -fx-padding: 10;           /* Adds padding for better appearance */
-    -fx-background-color: #FFB22C; /* Optional: Background color */
-    -fx-border-color: #FF4C4C; /* Optional: Border color */
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-padding: 10;
+    -fx-background-color: #AD49E1;
+    -fx-border-color: #7A1CAC;
+    -fx-font-size: 40px;
+    -fx-text-fill: white;
+}
+
+#aiScore {
+    -fx-background-color: white;
+    -fx-border-color: #7A1CAC;
+    -fx-text-fill: white;
+    -fx-font-size: 40px;
+}
+
+#humanScore {
+    -fx-background-color: white;
+    -fx-border-color: #7A1CAC;
+    -fx-text-fill: white;
+    -fx-font-size: 40px;
+    -fx-border-radius: 10px;
 }

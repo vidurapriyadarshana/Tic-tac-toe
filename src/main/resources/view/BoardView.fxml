@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="530.0" prefWidth="549.0" style="-fx-background-color: #000000;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assignment.tictactoe.controller.BoardController">
+<AnchorPane prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #EBD3F8;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assignment.tictactoe.controller.BoardController">
    <children>
-      <GridPane fx:id="MainGrid" hgap="10.0" layoutX="82.0" layoutY="46.0" prefHeight="530.0" prefWidth="549.0" vgap="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <GridPane fx:id="MainGrid" hgap="10.0" layoutX="64.0" layoutY="110.0" prefHeight="406.0" prefWidth="421.0" vgap="10.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="64.0" AnchorPane.topAnchor="110.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -31,5 +34,17 @@
             <Button fx:id="bt22" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="200.0" prefWidth="205.0" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="TOP" />
          </children>
       </GridPane>
+      <ImageView fitHeight="51.0" fitWidth="68.0" layoutX="170.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/Ai.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="51.0" fitWidth="68.0" layoutX="279.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/Human.jpg" />
+         </image>
+      </ImageView>
+       <Label fx:id="humanScore" layoutX="336.0" layoutY="14.0" prefHeight="24.0" prefWidth="100.0" text="0" />
+       <Label fx:id="aiScore" layoutX="64.0" layoutY="14.0" prefHeight="24.0" prefWidth="100.0" text="0" />
    </children>
 </AnchorPane>

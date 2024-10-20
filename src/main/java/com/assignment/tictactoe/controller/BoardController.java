@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
 public class BoardController implements BoardUi {
@@ -14,8 +15,18 @@ public class BoardController implements BoardUi {
     private AiPlayer ai;
     private HumanPlayer human;
 
+    private int aiWinCount = 0;
+    private int humanWinCount = 0;
+
+
     @FXML
     private GridPane MainGrid;
+
+    @FXML
+    private Label humanScore;
+
+    @FXML
+    private Label aiScore;
 
     public BoardController() {
         board = new BoardImpl();
@@ -73,11 +84,18 @@ public class BoardController implements BoardUi {
     @Override
     public void NotifyWinner(Piece winner) {
         if (winner == Piece.X) {
+            humanWinCount++;
+            System.out.println(humanWinCount);
+            humanScore.setText(String.valueOf(humanWinCount));
             showAlert("X wins");
         } else if (winner == Piece.O) {
+            aiWinCount++;
+            System.out.println(aiWinCount);
+            aiScore.setText(String.valueOf(aiWinCount));
             showAlert("O wins");
         }
     }
+
 
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION, message);
