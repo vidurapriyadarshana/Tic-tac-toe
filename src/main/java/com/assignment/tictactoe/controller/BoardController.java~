@@ -3,10 +3,8 @@ package com.assignment.tictactoe.controller;
 import com.assignment.tictactoe.service.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.DialogEvent;
 import javafx.scene.layout.GridPane;
 
 public class BoardController implements BoardUi {
@@ -28,23 +26,23 @@ public class BoardController implements BoardUi {
     @FXML
     void handleButtonAction(ActionEvent event) {
         Button button = (Button) event.getSource();
-        int row = Integer.parseInt(button.getId().substring(2, 3)); // Extract row index
-        int col = Integer.parseInt(button.getId().substring(3, 4)); // Extract column index
+        int row = Integer.parseInt(button.getId().substring(2, 3));
+        int col = Integer.parseInt(button.getId().substring(3, 4));
 
-        human.move(row, col); // Human makes a move
-        updateUi(); // Update the UI after the move
+        human.move(row, col);
+        updateUi();
 
         if (board.checkWinner() != null) {
-            NotifyWinner(board.checkWinner().getWinningPiece()); // Notify if there's a winner
+            NotifyWinner(board.checkWinner().getWinningPiece());
         } else if (board.isBoardFull()) {
-            showAlert("Tie"); // Show tie message if the board is full
+            showAlert("Tie");
         } else {
-            ai.findBestMove(); // AI makes a move
-            updateUi(); // Update UI after AI move
+            ai.findBestMove();
+            updateUi();
             if (board.checkWinner() != null) {
-                NotifyWinner(board.checkWinner().getWinningPiece()); // Notify if AI wins
+                NotifyWinner(board.checkWinner().getWinningPiece());
             } else if (board.isBoardFull()) {
-                showAlert("Tie"); // Check again for a tie
+                showAlert("Tie");
             }
         }
     }
@@ -58,23 +56,21 @@ public class BoardController implements BoardUi {
         }
     }
 
-    // Update individual buttons based on the board's state (X, O, or empty)
     @Override
     public void update(int row, int col, Piece piece) {
-        String buttonId = "#bt" + row + col; // Button ID pattern (e.g., #bt00, #bt01, etc.)
-        Button button = (Button) MainGrid.lookup(buttonId); // Lookup button directly by its ID
-        if (button != null) { // Ensure the button exists before updating
+        String buttonId = "#bt" + row + col;
+        Button button = (Button) MainGrid.lookup(buttonId);
+        if (button != null) {
             if (piece == Piece.X) {
                 button.setText("X");
             } else if (piece == Piece.O) {
                 button.setText("O");
             } else {
-                button.setText(""); // Clear text if the cell is empty
+                button.setText("");
             }
         }
     }
 
-    // Notify the winner (X or O)
     @Override
     public void NotifyWinner(Piece winner) {
         if (winner == Piece.X) {
@@ -84,13 +80,12 @@ public class BoardController implements BoardUi {
         }
     }
 
-    // Show an alert message and reset the board after closing the dialog
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION, message);
         alert.setOnCloseRequest(event -> {
-            board.initializeBoard(); // Reset the board
-            updateUi(); // Update the UI to reflect the reset
+            board.initializeBoard();
+            updateUi();
         });
-        alert.showAndWait(); // Wait for the user to close the alert
+        alert.showAndWait(); 
     }
 }

@@ -28,8 +28,4 @@ public class Winner {
         this.col3 = col3;
         this.row3 = row3;
     }
-
-    public Piece getWinningPiece() {
-        return winningPiece;
-    }
 }

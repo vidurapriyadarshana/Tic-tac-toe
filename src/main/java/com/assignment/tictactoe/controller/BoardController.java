@@ -47,7 +47,6 @@ public class BoardController implements BoardUi {
         }
     }
 
-    // Method to update the UI buttons based on the current board state
     public void updateUi() {
         for (int row = 0; row < board.getPieces().length; row++) {
             for (int col = 0; col < board.getPieces()[row].length; col++) {
@@ -86,6 +85,6 @@ public class BoardController implements BoardUi {
             board.initializeBoard();
             updateUi();
         });
-        alert.showAndWait(); 
+        alert.showAndWait();
     }
 }

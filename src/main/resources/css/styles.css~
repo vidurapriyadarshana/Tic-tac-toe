@@ -1,0 +1,7 @@
+.button {
+    -fx-background-radius: 20; /* Makes corners rounded */
+    -fx-border-radius: 20;     /* Makes border corners rounded */
+    -fx-padding: 10;           /* Adds padding for better appearance */
+    -fx-background-color: #FFB22C; /* Optional: Background color */
+    -fx-border-color: #FF4C4C; /* Optional: Border color */
+}
