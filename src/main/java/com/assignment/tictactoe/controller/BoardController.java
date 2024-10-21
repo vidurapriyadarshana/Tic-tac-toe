@@ -116,7 +116,7 @@ public class BoardController implements BoardUi {
 
     private void showSimpleAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION, message);
-        alert.showAndWait(); // No board reset, just show the alert
+        alert.showAndWait();
     }
 
 }
