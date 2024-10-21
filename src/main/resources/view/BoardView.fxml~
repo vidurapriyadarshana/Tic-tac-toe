@@ -34,17 +34,17 @@
             <Button fx:id="bt22" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="200.0" prefWidth="205.0" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="TOP" />
          </children>
       </GridPane>
-      <ImageView fitHeight="51.0" fitWidth="68.0" layoutX="170.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="51.0" fitWidth="68.0" layoutX="171.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assests/Ai.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="51.0" fitWidth="68.0" layoutX="279.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="51.0" fitWidth="68.0" layoutX="278.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assests/Human.jpg" />
          </image>
       </ImageView>
-       <Label fx:id="humanScore" layoutX="336.0" layoutY="14.0" prefHeight="24.0" prefWidth="100.0" text="0" />
-       <Label fx:id="aiScore" layoutX="64.0" layoutY="14.0" prefHeight="24.0" prefWidth="100.0" text="0" textAlignment="CENTER" />
+      <Label fx:id="aiScore" layoutX="64.0" layoutY="24.0" prefHeight="61.0" prefWidth="91.0" text="-" />
+      <Label fx:id="humanScore" layoutX="344.0" layoutY="24.0" prefHeight="61.0" prefWidth="91.0" text="-" />
    </children>
 </AnchorPane>
