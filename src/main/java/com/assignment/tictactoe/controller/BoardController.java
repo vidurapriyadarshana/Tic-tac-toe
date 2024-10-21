@@ -37,6 +37,12 @@ public class BoardController implements BoardUi {
     @FXML
     void handleButtonAction(ActionEvent event) {
         Button button = (Button) event.getSource();
+
+        if (!button.getText().isEmpty()) {
+            showSimpleAlert("This button is already clicked! Please select another button.");
+            return;
+        }
+
         int row = Integer.parseInt(button.getId().substring(2, 3));
         int col = Integer.parseInt(button.getId().substring(3, 4));
 
@@ -50,6 +56,7 @@ public class BoardController implements BoardUi {
         } else {
             ai.findBestMove();
             updateUi();
+
             if (board.checkWinner() != null) {
                 NotifyWinner(board.checkWinner().getWinningPiece());
             } else if (board.isBoardFull()) {
@@ -57,6 +64,8 @@ public class BoardController implements BoardUi {
             }
         }
     }
+
+
 
     public void updateUi() {
         for (int row = 0; row < board.getPieces().length; row++) {
@@ -104,4 +113,10 @@ public class BoardController implements BoardUi {
         });
         alert.showAndWait();
     }
+
+    private void showSimpleAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, message);
+        alert.showAndWait(); // No board reset, just show the alert
+    }
+
 }

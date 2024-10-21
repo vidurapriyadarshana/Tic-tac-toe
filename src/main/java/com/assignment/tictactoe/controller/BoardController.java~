@@ -37,6 +37,13 @@ public class BoardController implements BoardUi {
     @FXML
     void handleButtonAction(ActionEvent event) {
         Button button = (Button) event.getSource();
+
+        // Check if the button already has a value (X or O)
+        if (!button.getText().isEmpty()) {
+            showSimpleAlert("This button is already clicked! Please select another button.");
+            return; // Stop further execution
+        }
+
         int row = Integer.parseInt(button.getId().substring(2, 3));
         int col = Integer.parseInt(button.getId().substring(3, 4));
 
@@ -46,17 +53,20 @@ public class BoardController implements BoardUi {
         if (board.checkWinner() != null) {
             NotifyWinner(board.checkWinner().getWinningPiece());
         } else if (board.isBoardFull()) {
-            showAlert("Tie");
+            showGameOverAlert("Tie");
         } else {
             ai.findBestMove();
             updateUi();
+
             if (board.checkWinner() != null) {
                 NotifyWinner(board.checkWinner().getWinningPiece());
             } else if (board.isBoardFull()) {
-                showAlert("Tie");
+                showGameOverAlert("Tie");
             }
         }
     }
+
+
 
     public void updateUi() {
         for (int row = 0; row < board.getPieces().length; row++) {
@@ -86,12 +96,12 @@ public class BoardController implements BoardUi {
         if (winner == Piece.X) {
             humanWinCount++;
             System.out.println(humanWinCount);
-            humanScore.setText();
+            humanScore.setText(humanWinCount + "");
             showAlert("X wins");
         } else if (winner == Piece.O) {
             aiWinCount++;
             System.out.println(aiWinCount);
-            aiScore.setText(String.valueOf(aiWinCount));
+            aiScore.setText(aiWinCount + "");
             showAlert("O wins");
         }
     }
@@ -104,4 +114,19 @@ public class BoardController implements BoardUi {
         });
         alert.showAndWait();
     }
+
+    private void showSimpleAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, message);
+        alert.showAndWait(); 
+    }
+
+    private void showGameOverAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, message);
+        alert.setOnCloseRequest(event -> {
+            board.initializeBoard();
+            updateUi();
+        });
+        alert.showAndWait();
+    }
+
 }
