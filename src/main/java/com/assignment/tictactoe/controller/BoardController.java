@@ -10,14 +10,12 @@ import javafx.scene.layout.GridPane;
 
 public class BoardController implements BoardUi {
 
-
     private BoardImpl board;
-    private AiPlayer ai;
-    private HumanPlayer human;
+    private Player ai;
+    private Player human;
 
     private int aiWinCount = 0;
     private int humanWinCount = 0;
-
 
     @FXML
     private GridPane MainGrid;
@@ -29,7 +27,7 @@ public class BoardController implements BoardUi {
     private Label aiScore;
 
     public BoardController() {
-        board = new BoardImpl();
+        board = new BoardImpl(this);
         ai = new AiPlayer(board);
         human = new HumanPlayer(board);
     }
@@ -54,7 +52,7 @@ public class BoardController implements BoardUi {
         } else if (board.isBoardFull()) {
             showAlert("Tie");
         } else {
-            ai.findBestMove();
+            ai.move(-1,-1);
             updateUi();
 
             if (board.checkWinner() != null) {
@@ -64,8 +62,6 @@ public class BoardController implements BoardUi {
             }
         }
     }
-
-
 
     public void updateUi() {
         for (int row = 0; row < board.getPieces().length; row++) {

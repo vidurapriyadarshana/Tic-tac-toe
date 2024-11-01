@@ -8,41 +8,45 @@ public class AiPlayer extends Player {
 
     @Override
     public void move(int row, int col) {
-        if (board.isLegalMove(row, col)) {
-            board.updateMove(row, col, Piece.O);
-        }
-    }
+//        if (board.isLegalMove(row, col)) {
+//            board.updateMove(row, col, Piece.O);
+//        }
 
-    public void findBestMove() {
-        int bestValue = Integer.MIN_VALUE;
-        int bestRow = -1;
-        int bestCol = -1;
-        Piece[][] pieces = board.getPieces();
+        int maxScore = Integer.MIN_VALUE;
 
-        for (int i = 0; i < pieces.length; i++) {
-            for (int j = 0; j < pieces[i].length; j++) {
-                if (pieces[i][j] == Piece.EMPTY) {
-                    pieces[i][j] = Piece.O;
-                    int moveValue = minimax(pieces, 0, false);
-                    pieces[i][j] = Piece.EMPTY;
 
-                    if (moveValue > bestValue) {
-                        bestRow = i;
-                        bestCol = j;
-                        bestValue = moveValue;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j <3; j++) {
+                if (board.isLegalMove(i, j)) {
+                    board.updateMove(i, j, Piece.O);
+                    int score = minimax(board.getPieces(), 0, false);
+                    board.updateMove(i, j, Piece.EMPTY);
+
+                    if (score > maxScore) {
+                        row = i;
+                        col = j;
+                        maxScore = score;
                     }
                 }
             }
         }
+        System.out.println("row and col : " + row + " " + col);
+        if (row != -1 && col != -1) {
+            System.out.println("row and col : " +row + " " + col);
+            board.updateMove(row, col, Piece.O);
+            board.getBoardUI().update(row, col, Piece.O);
 
-
-        if (bestRow != -1 && bestCol != -1) {
-            move(bestRow, bestCol);
         }
     }
 
+    public void findBestMove() {
+
+    }
+
     private int minimax(Piece[][] pieces, int depth, boolean isMaximizing) {
+
         Winner winner = board.checkWinner();
+
         if (winner != null) {
             if (winner.getWinningPiece() == Piece.O) {
                 return 10 - depth;

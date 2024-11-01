@@ -5,13 +5,20 @@ import lombok.Getter;
 public class BoardImpl implements Board {
 
     private Piece[][] pieces = new Piece[3][3];
+    public BoardUi boardUI;
 
-    public BoardImpl() {
+    public BoardImpl(BoardUi boardUi) {
         initializeBoard();
+        this.boardUI = boardUi;
     }
 
     public Piece[][] getPieces() {
         return pieces;
+    }
+
+    @Override
+    public BoardUi getBoardUI() {
+        return boardUI;
     }
 
     @Override

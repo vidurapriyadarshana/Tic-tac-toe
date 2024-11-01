@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane fx:id="mainAnchor" prefHeight="500.0" prefWidth="500.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assignment.tictactoe.controller.BoardController">
+<AnchorPane prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #EBD3F8;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assignment.tictactoe.controller.BoardController">
    <children>
       <GridPane fx:id="MainGrid" hgap="10.0" layoutX="64.0" layoutY="110.0" prefHeight="406.0" prefWidth="421.0" vgap="10.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="64.0" AnchorPane.topAnchor="110.0">
         <columnConstraints>
@@ -34,17 +34,17 @@
             <Button fx:id="bt22" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="200.0" prefWidth="205.0" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="TOP" />
          </children>
       </GridPane>
-      <ImageView fitHeight="51.0" fitWidth="68.0" layoutX="170.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="51.0" fitWidth="68.0" layoutX="171.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assests/Ai.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="51.0" fitWidth="68.0" layoutX="279.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="51.0" fitWidth="68.0" layoutX="278.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assests/Human.jpg" />
          </image>
       </ImageView>
-       <Label fx:id="humanScore" layoutX="336.0" layoutY="14.0" prefHeight="24.0" prefWidth="100.0" text="0" />
-       <Label fx:id="aiScore" layoutX="64.0" layoutY="14.0" prefHeight="24.0" prefWidth="100.0" text="0" textAlignment="CENTER" />
+      <Label fx:id="aiScore" layoutX="64.0" layoutY="24.0" prefHeight="61.0" prefWidth="91.0" text="-" />
+      <Label fx:id="humanScore" layoutX="344.0" layoutY="24.0" prefHeight="61.0" prefWidth="91.0" text="-" />
    </children>
 </AnchorPane>
