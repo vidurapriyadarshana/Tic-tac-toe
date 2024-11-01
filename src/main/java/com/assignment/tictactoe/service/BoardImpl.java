@@ -4,16 +4,13 @@ import lombok.Getter;
 
 public class BoardImpl implements Board {
 
+    @Getter
     private Piece[][] pieces = new Piece[3][3];
     public BoardUi boardUI;
 
     public BoardImpl(BoardUi boardUi) {
         initializeBoard();
         this.boardUI = boardUi;
-    }
-
-    public Piece[][] getPieces() {
-        return pieces;
     }
 
     @Override

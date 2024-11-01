@@ -8,12 +8,8 @@ public class AiPlayer extends Player {
 
     @Override
     public void move(int row, int col) {
-//        if (board.isLegalMove(row, col)) {
-//            board.updateMove(row, col, Piece.O);
-//        }
 
         int maxScore = Integer.MIN_VALUE;
-
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j <3; j++) {
@@ -39,9 +35,7 @@ public class AiPlayer extends Player {
         }
     }
 
-    public void findBestMove() {
 
-    }
 
     private int minimax(Piece[][] pieces, int depth, boolean isMaximizing) {
 
